@@ -12,13 +12,14 @@ public class DBhelper {
 	private static DBhelper dbhelper;
 	private Connection connection;
 	private Statement statement;
-	private static List<Questions> fullList;
+	private static List<Questions> fullList = new ArrayList();
 	
-	public DBhelper() {		
+	public DBhelper() {			
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/space_quiz","root","");	
-			statement = connection.createStatement();						
+			statement = connection.createStatement();
+			fullList = populateList();			
 		}catch(Exception e){e.printStackTrace();}
 	}
 		
@@ -38,9 +39,8 @@ public class DBhelper {
 			String question = rs.getString(2);
 			String answer = rs.getString(3);
 			String qType = rs.getString(4);
-			String qDifficulty= rs.getString(5);
-			
-			if(qType.equalsIgnoreCase("RB")){
+			String qDifficulty= rs.getString(5);			
+			if(qType.equalsIgnoreCase("RB")){				
 				RadioButtonQuestions radioButtonQuestions = new RadioButtonQuestions();
 				radioButtonQuestions.setOptionsArray(answer.split("/"));
 				radioButtonQuestions.setId(id);
@@ -49,8 +49,8 @@ public class DBhelper {
 				radioButtonQuestions.setQuestionDifficulty(qDifficulty);
 				qList.add(radioButtonQuestions);
 			}
-			else				
-				qList.add(new Questions(id,question,answer,qType,qDifficulty));						
+			else
+				qList.add(new Questions(id,question,answer,qType,qDifficulty));							
 		}
 		}catch(Exception e){e.printStackTrace();}
 		
@@ -58,15 +58,14 @@ public class DBhelper {
 	}
 		
 	public Questions getByTypeAndDifficulty(QuestionCategory category){
-		Questions questions=null;
 		
 		for(int i=0;i<fullList.size();i++){
-			if(fullList.get(i).getQuestionType().equalsIgnoreCase(category.getqType()) && fullList.get(i).getQuestionDifficulty().equalsIgnoreCase(category.getqDifficulty())){
-				questions = fullList.remove(i);
-				break;
+			Questions listQuestions = fullList.get(i);
+			if(listQuestions.getQuestionType().equalsIgnoreCase(category.getqType()) && listQuestions.getQuestionDifficulty().equalsIgnoreCase(category.getqDifficulty())){				
+				return fullList.remove(i);				
 			}
 		}
-		return questions;
+		return null;
 	}
 	
 }

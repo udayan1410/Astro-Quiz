@@ -8,6 +8,10 @@ import interfaces.QuestionListMaker;
 
 public class CategoryFirstHalf implements QuestionListMaker {
 
+	public CategoryFirstHalf() {
+		populateMap();
+	}
+	
 	@Override
 	public void populateMap() {
 		map.put(1,new QuestionCategory("RB","EASY"));
@@ -26,7 +30,7 @@ public class CategoryFirstHalf implements QuestionListMaker {
 	public List<Questions> getQuestionsList() {		
 		List<Questions> list = new ArrayList();				
 		for(Map.Entry<Integer,QuestionCategory> entry:map.entrySet())
-			list.add(dBhelper.getByTypeAndDifficulty(map.get(entry.getKey())));
+			list.add(dBhelper.getByTypeAndDifficulty(entry.getValue()));
 		
 		return list;
 	}

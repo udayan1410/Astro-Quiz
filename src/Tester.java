@@ -1,23 +1,26 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import database.DBhelper;
 import model.Questions;
 import model.RadioButtonQuestions;
-
-
+import model.Score;
 
 public class Tester {
-	List<Questions> firstHalfList = new ArrayList();
-	static DBhelper dBhelper;
+	public static Scanner scanner;
 	
-	Tester(){
-		dBhelper = DBhelper.getReference();		
-	}
 	
 	public static void main(String args[]){					
-		Tester tester = new Tester();
-			
+		Score score = new Score();
+		scanner =new Scanner(System.in);
+		
+		while(score.hasNext()){
+			Questions questions = score.getNextQuestion(); 			
+			System.out.println(questions.getQuestion()); 			
+			String op = scanner.next();
+			score.checkAnswer(questions.getAnswer(),op);
+		}
 	}
 	
 }

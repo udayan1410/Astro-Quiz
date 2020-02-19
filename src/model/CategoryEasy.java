@@ -8,8 +8,14 @@ import interfaces.QuestionListMaker;
 
 public class CategoryEasy implements QuestionListMaker{
 
+	public CategoryEasy() {
+		populateMap();
+		System.out.println("SECOND HALF EASY");
+	}
+	
 	@Override
 	public void populateMap() {
+		map.clear();
 		map.put(11,new QuestionCategory("RB","EASY"));
 		map.put(12,new QuestionCategory("TF","EASY"));
 		map.put(13,new QuestionCategory("RB","EASY"));
@@ -26,7 +32,7 @@ public class CategoryEasy implements QuestionListMaker{
 	public List<Questions> getQuestionsList() {		
 		List<Questions> list = new ArrayList();				
 		for(Map.Entry<Integer,QuestionCategory> entry:map.entrySet())
-			list.add(dBhelper.getByTypeAndDifficulty(map.get(entry.getKey())));
+			list.add(dBhelper.getByTypeAndDifficulty(entry.getValue()));
 		
 		return list;
 	}
