@@ -7,14 +7,19 @@ public class Questions {
 	private String questionType;
 	private String questionDifficulty;
 		
+	
+	public Questions() {
+	}
+	
 	public Questions(Integer id,String question,String answer,String questionType,String questionDifficulty){
 		this.id = id;
 		this.question = question;		
 		this.questionType = questionType;
 		this.questionDifficulty = questionDifficulty;
-		setAnswer(answer);
+		this.answer = answer;
 	}
-	
+
+
 	public Integer getId() {
 		return id;
 	}
@@ -37,18 +42,7 @@ public class Questions {
 	public void setQuestion(String question) {
 		this.question = question;
 	}
-	public void setAnswer(String answer) {
-		if(this.getQuestionType().equalsIgnoreCase("RB")){
-			String strArr[] = answer.split("/");
-			for(int i=0;i<strArr.length;i++){
-				String string = strArr[i];
-				string = string.trim();
-				if(string.charAt(0)>=65 && string.charAt(0)<=90){
-					this.answer = string;
-					return;
-				}
-			}
-		}
+	public void setAnswer(String answer) {		
 		this.answer = answer;
 	}
 	public void setQuestionType(String questionType) {
