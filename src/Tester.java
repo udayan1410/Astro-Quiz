@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import database.DBhelper;
 import model.Questions;
 import model.RadioButtonQuestions;
@@ -21,7 +20,6 @@ public class Tester {
 			String op = scanner.nextLine();
 			score.checkAnswer(questions.getAnswer(),op);
 		}
-
 		System.out.println(score.getFinalScore());
 	}
 	
