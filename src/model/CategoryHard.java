@@ -8,8 +8,7 @@ import interfaces.QuestionListMaker;
 
 public class CategoryHard implements QuestionListMaker{
 
-	public CategoryHard() {
-		System.out.println("SECOND HALF HARd");
+	public CategoryHard() {		
 		populateMap();
 	}
 	

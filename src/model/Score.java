@@ -8,7 +8,7 @@ import interfaces.QuestionListMaker;
 
 public class Score {
 	private List<Questions> questionsList = new ArrayList();
-	private int correctAnswers, currentQuestion;
+	private int correctAnswers, currentQuestion,firstHalfResult;
 	private QuestionListMaker listMaker;
 
 	public Score() {
@@ -32,6 +32,7 @@ public class Score {
 
 	private void updateList() {
 		questionsList.clear();
+		firstHalfResult = correctAnswers;
 		if (correctAnswers < 5)
 			listMaker = new CategoryEasy();
 
@@ -58,6 +59,24 @@ public class Score {
 	
 	public boolean hasNext(){
 		return questionsList.size()>0?true:false;
+	}
+
+	public int getFinalScore(){
+		int finalScore=0;
+		if(listMaker instanceof CategoryEasy){			
+			finalScore = (int)((correctAnswers - firstHalfResult)*0.70);
+		}
+		else if (listMaker instanceof CategoryMedium){			
+			finalScore = correctAnswers;
+		}
+		else {					
+			int secondHalfResult = correctAnswers-firstHalfResult;
+			if(secondHalfResult<=8)
+				secondHalfResult+=2;
+			finalScore = secondHalfResult+firstHalfResult;
+		}
+		
+		return finalScore;
 	}
 	
 }

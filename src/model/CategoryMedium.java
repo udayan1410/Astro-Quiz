@@ -8,8 +8,7 @@ import interfaces.QuestionListMaker;
 
 public class CategoryMedium implements QuestionListMaker {
 
-	public CategoryMedium() {
-		System.out.println("SECOND HALF MEDIUM");
+	public CategoryMedium() {		
 		populateMap();
 	}
 	

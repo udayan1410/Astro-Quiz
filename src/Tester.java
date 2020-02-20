@@ -18,9 +18,12 @@ public class Tester {
 		while(score.hasNext()){
 			Questions questions = score.getNextQuestion(); 			
 			System.out.println(questions.getQuestion()); 			
-			String op = scanner.next();
+			String op = scanner.nextLine();
 			score.checkAnswer(questions.getAnswer(),op);
 		}
+
+		System.out.println(score.getFinalScore());
 	}
+	
 	
 }

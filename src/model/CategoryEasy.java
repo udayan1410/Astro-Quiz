@@ -9,8 +9,7 @@ import interfaces.QuestionListMaker;
 public class CategoryEasy implements QuestionListMaker{
 
 	public CategoryEasy() {
-		populateMap();
-		System.out.println("SECOND HALF EASY");
+		populateMap();	
 	}
 	
 	@Override
