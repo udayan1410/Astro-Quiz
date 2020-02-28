@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import database.DBhelper;
+import gui.WindowQuestionScreen;
 import model.Questions;
 import model.RadioButtonQuestions;
 import model.Score;
@@ -10,8 +11,9 @@ public class Tester {
 	public static Scanner scanner;
 	
 	
-	public static void main(String args[]){					
-		Score score = new Score();
+	public static void main(String args[]){			
+		new WindowQuestionScreen();
+		/*Score score = new Score();
 		scanner =new Scanner(System.in);
 		
 		while(score.hasNext()){
@@ -20,7 +22,7 @@ public class Tester {
 			String op = scanner.nextLine();
 			score.checkAnswer(questions.getAnswer(),op);
 		}
-		System.out.println(score.getFinalScore());
+		System.out.println(score.getFinalScore());*/
 	}
 	
 	

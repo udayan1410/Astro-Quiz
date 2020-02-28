@@ -8,7 +8,8 @@ import interfaces.QuestionListMaker;
 
 public class Score {
 	private List<Questions> questionsList = new ArrayList();
-	private int correctAnswers, currentQuestion,firstHalfResult;
+	private int correctAnswers,firstHalfResult;
+	public int currentQuestion;
 	private QuestionListMaker listMaker;
 
 	public Score() {
@@ -18,8 +19,7 @@ public class Score {
 	}
 
 	public boolean checkAnswer(String userAnswer, String actualAnswer) {
-		currentQuestion += 1;
-
+		currentQuestion += 1;		
 		if (currentQuestion == 11)
 			updateList();
 
@@ -64,16 +64,21 @@ public class Score {
 	public int getFinalScore(){
 		int finalScore=0;
 		if(listMaker instanceof CategoryEasy){			
-			finalScore = (int)((correctAnswers - firstHalfResult)*0.70);
+			finalScore =firstHalfResult+ (int)((correctAnswers - firstHalfResult)*0.70);
+			System.out.println("Second category = Easy");
 		}
+		
 		else if (listMaker instanceof CategoryMedium){			
 			finalScore = correctAnswers;
+			System.out.println("Second category = Medium");
 		}
+	
 		else {					
 			int secondHalfResult = correctAnswers-firstHalfResult;
 			if(secondHalfResult<=8)
 				secondHalfResult+=2;
 			finalScore = secondHalfResult+firstHalfResult;
+			System.out.println("Second category = Hard");
 		}
 		
 		return finalScore;

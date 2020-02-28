@@ -51,10 +51,10 @@ public class Questions {
 	public void setQuestionDifficulty(String questionDifficulty) {
 		this.questionDifficulty = questionDifficulty;
 	}
-
-
-
 	
-
+	public String toString(){
+		return this.question+" "+this.answer+" "+this.questionType+" "+this.questionDifficulty+" \n";
+		
+	}
 
 }
