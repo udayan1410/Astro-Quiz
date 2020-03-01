@@ -13,19 +13,12 @@ public class Tester {
 	
 	
 	public static void main(String args[]){			
+
 		//new WindowStartScreen();
 		new WindowStartScreen();
-		/*Score score = new Score();
-		scanner =new Scanner(System.in);
+
+		new WindowStartScreen();
 		
-		while(score.hasNext()){
-			Questions questions = score.getNextQuestion(); 			
-			System.out.println(questions.getQuestion()); 			
-			String op = scanner.nextLine();
-			score.checkAnswer(questions.getAnswer(),op);
-		}
-		System.out.println(score.getFinalScore());*/
+
 	}
-	
-	
 }
