@@ -67,8 +67,11 @@ public class WindowQuestionScreen extends JFrame {
 	public void setTimeOut() {
 		timePanel.setTimeOut(new TimeOut() {
 			@Override
-			public void timeOver() {
-				callBackScreen();
+			public void timeOver(PanelTimePanel context) {				
+				if(timePanel == context){
+					score.checkAnswer(questions.getAnswer(),"");
+					callBackScreen();					
+				}					
 			}
 		});
 	}
@@ -77,6 +80,7 @@ public class WindowQuestionScreen extends JFrame {
 
 		@Override
 		public void buttonClicked(String userAnswer) {
+			//System.out.println("user answer = "+userAnswer+" actual = "+questions.getAnswer());
 			score.checkAnswer(questions.getAnswer(),userAnswer);
 			callBackScreen();
 		}

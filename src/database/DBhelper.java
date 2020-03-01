@@ -5,6 +5,7 @@ import java.sql.*;
 import model.QuestionCategory;
 import model.Questions;
 import model.RadioButtonQuestions;
+import utilities.Utils;
 
 import java.util.*;
 
@@ -47,6 +48,7 @@ public class DBhelper {
 				radioButtonQuestions.setQuestion(question);
 				radioButtonQuestions.setQuestionType(qType);
 				radioButtonQuestions.setQuestionDifficulty(qDifficulty);
+			
 				qList.add(radioButtonQuestions);
 			}
 			else
@@ -67,5 +69,7 @@ public class DBhelper {
 		}
 		return null;
 	}
+	
+	
 	
 }
