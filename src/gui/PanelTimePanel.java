@@ -89,7 +89,7 @@ public class PanelTimePanel extends JPanel {
 		this.timeOut = timeOut;	
 	}
 	
-	public void setCurrentQuestion(int currentQuestion){	
+	public void setCurrentQuestion(int currentQuestion){		
 		curQuestion.setText("Q.No : "+currentQuestion+"/20");
 	}
 	

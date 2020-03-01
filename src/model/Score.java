@@ -18,7 +18,7 @@ public class Score {
 		initializeList();
 	}
 
-	public boolean checkAnswer(String userAnswer, String actualAnswer) {
+	public boolean checkAnswer(String actualAnswer, String userAnswer) {		
 		currentQuestion += 1;		
 		if (currentQuestion == 11)
 			updateList();

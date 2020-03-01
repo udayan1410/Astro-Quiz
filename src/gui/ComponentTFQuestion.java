@@ -1,16 +1,21 @@
 package gui;
 
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 import interfaces.QuestionType;
 import model.Questions;
 
-public class ComponentTFQuestion extends PanelQuestionPanel implements  QuestionType{
+public class ComponentTFQuestion extends PanelQuestionPanel implements QuestionType {
 	private Questions questions;
 
-	public ComponentTFQuestion(Questions questions) {
-		super(40);
+	public ComponentTFQuestion(Questions questions) {		
 		this.questions = questions;
-		System.out.println("in Tf");
+		displayQuestion(questions);
 	}
 }

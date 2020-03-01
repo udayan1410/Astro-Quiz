@@ -5,7 +5,12 @@ import java.awt.Component;
 import java.awt.FlowLayout;
 
 import utilities.Utils;
+
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+
+import interfaces.CustomButtonCommunicator;
 import interfaces.QuestionType;
 import interfaces.TimeOut;
 import model.Questions;
@@ -14,51 +19,68 @@ import model.Score;
 public class WindowQuestionScreen extends JFrame {
 
 	private Score score = new Score();
-	private PanelQuestionPanel questionPanel;
-	private PanelTitlePanel titlePanel;
+	private PanelQuestionPanel questionPanel;	
 	private TimeOut timeOut;
 	private PanelTimePanel timePanel;
+	public Questions questions;
 
 	public WindowQuestionScreen() {
 		super("ASTRO QUIZ");
 
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
-
+		setDefaultLookAndFeelDecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 		setVisible(true);
-
-		titlePanel = new PanelTitlePanel();
-		add(titlePanel,BorderLayout.NORTH);
+		
 		updatePanel();
 	}
 
 	public void updatePanel() {
 		if (score.hasNext()) {
+			
 			timePanel = new PanelTimePanel();
-			setTimeOut();		
+			setTimeOut();			
 			timePanel.setCurrentQuestion(score.currentQuestion);
 			add(timePanel, BorderLayout.WEST);
-			Questions questions = score.getNextQuestion();
+			
+			questions = score.getNextQuestion();
 			questionPanel = Utils.getQuestionPanel(questions);
-			add(questionPanel, BorderLayout.CENTER);
+			questionPanel.setButtonCommunicator(new RBButtonCommunicator());			
+			add(questionPanel, BorderLayout.CENTER);			
+			
 			validate();
 			repaint();
-			score.checkAnswer(questions.getAnswer(), questions.getAnswer());			
-		} else {
+			
+		} else 
 			System.out.println(score.getFinalScore());
-		}
+		
 	}
 
+	public void callBackScreen(){
+		remove(questionPanel);
+		remove(timePanel);
+		updatePanel();
+	}
+	
+	
 	public void setTimeOut() {
 		timePanel.setTimeOut(new TimeOut() {
 			@Override
 			public void timeOver() {
-				remove(questionPanel);
-				remove(timePanel);
-				updatePanel();
+				callBackScreen();
 			}
 		});
+	}
+	
+	public class RBButtonCommunicator implements CustomButtonCommunicator{
+
+		@Override
+		public void buttonClicked(String userAnswer) {
+			score.checkAnswer(questions.getAnswer(),userAnswer);
+			callBackScreen();
+		}
+		
 	}
 
 }
