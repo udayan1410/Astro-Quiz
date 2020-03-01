@@ -3,7 +3,6 @@ import java.util.List;
 import java.util.Scanner;
 import database.DBhelper;
 import gui.WindowQuestionScreen;
-import gui.WindowStartScreen;
 import model.Questions;
 import model.RadioButtonQuestions;
 import model.Score;
@@ -13,7 +12,8 @@ public class Tester {
 	
 	
 	public static void main(String args[]){			
-		new WindowStartScreen();
+		//new WindowStartScreen();
+		new WindowQuestionScreen();
 		/*Score score = new Score();
 		scanner =new Scanner(System.in);
 		
