@@ -16,10 +16,9 @@ public class Utils {
 	
 	public static final Integer COUNTDOWN_INTEGER=20;
 	public static final Dimension DIMENSION = Toolkit.getDefaultToolkit().getScreenSize(); 
-	public static final Color SKYBLUE = new Color(135,206,250);		
+	public static final Color SKYBLUE = new Color(12,99,199);		
 	public static final Color DARKBLUE = new Color(40, 15, 122);		
-	
-	
+
 	public static PanelQuestionPanel getQuestionPanel(Questions questions){
 		PanelQuestionPanel questionPanel=null;
 		

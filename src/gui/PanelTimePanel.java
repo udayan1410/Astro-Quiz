@@ -24,9 +24,11 @@ public class PanelTimePanel extends JPanel {
 	private JLabel label,clockGIF,curQuestion;	
 	private TimeOut timeOut;
 	public int i = Utils.COUNTDOWN_INTEGER;
-
+	private String currentQuestion;
+	private final PanelTimePanel context;
+	
 	public PanelTimePanel() {
-
+		this.context = this;
 		setLayout(new FlowLayout(FlowLayout.TRAILING));
 		Dimension dimension = getPreferredSize();
 		dimension.width = 250;
@@ -74,7 +76,7 @@ public class PanelTimePanel extends JPanel {
 					i -= 1;
 					label.setText(""+Utils.COUNTDOWN_INTEGER);
 				}
-				timeOut.timeOver();
+				timeOut.timeOver(context);
 			}
 		}).start();
 
@@ -89,8 +91,13 @@ public class PanelTimePanel extends JPanel {
 		this.timeOut = timeOut;	
 	}
 	
-	public void setCurrentQuestion(int currentQuestion){		
+	public void setCurrentQuestion(int currentQuestion){
+		this.currentQuestion = String.valueOf(currentQuestion);		
 		curQuestion.setText("Q.No : "+currentQuestion+"/20");
+	}
+	
+	public String toString(){
+		return currentQuestion;
 	}
 	
 }

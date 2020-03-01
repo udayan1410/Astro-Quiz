@@ -26,7 +26,8 @@ public class CustomButton extends JLabel {
 	private CustomButton customButton;
 	private CustomButtonCommunicator buttonCommunicator;
 	
-	public CustomButton(String title) {	
+	public CustomButton(String title) {
+		title = title.toUpperCase();
 		LineBorder line = new LineBorder(Color.white,2,true); 
 		customButton = this;
 		new JLabel();
@@ -65,7 +66,7 @@ public class CustomButton extends JLabel {
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
 				setBackground(Utils.SKYBLUE);
-				customButton.setFont(new Font(Font.SANS_SERIF,Font.BOLD,18));
+				customButton.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
 				setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
 			}
 			

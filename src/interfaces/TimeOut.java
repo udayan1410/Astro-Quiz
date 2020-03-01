@@ -1,5 +1,7 @@
 package interfaces;
 
+import gui.PanelTimePanel;
+
 public interface TimeOut {
-	public void timeOver();
+	public void timeOver(PanelTimePanel context);
 }
