@@ -3,8 +3,10 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Image;
+import java.awt.Panel;
 
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,6 +25,7 @@ public class WindowStartScreen extends JFrame {
 	
 		public WindowStartScreen()
 		{
+			
 		setTitle("Space Quiz");
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		setDefaultLookAndFeelDecorated(true);
@@ -30,16 +33,26 @@ public class WindowStartScreen extends JFrame {
 		
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setVisible(true);
+	
 		
 		
 		setContentPane(new JLabel(new ImageIcon(this.getClass().getResource("./assets/bg.jpeg"))));
-		setLayout(new BorderLayout());
-		setVisible(true);
-	
+		
+		//setLayout(new FlowLayout(FlowLayout.TRAILING));
+		this.setLayout(new BoxLayout(getContentPane(),BoxLayout.Y_AXIS));
+		
+		
 		
 		NewGame = new CustomButton("New Game");
-		NewGame.setButtonCommunicator(new ButtonHandler());
+		NewGame.setButtonCommunicator(new CustomButtonCommunicator() {
+			
+			@Override
+			public void buttonClicked(String userAnswer) {
+				new WindowQuestionScreen();
+				dispose();
+				
+			}
+		});
 		
 		Settings = new CustomButton("Settings");
 		Settings.setButtonCommunicator(new ButtonHandler());
@@ -50,6 +63,8 @@ public class WindowStartScreen extends JFrame {
 		Exit = new CustomButton("Exit");
 		Exit.setButtonCommunicator(new ButtonHandler());
 		
+		add(new PanelTitlePanel());
+		add(Box.createRigidArea(new Dimension(0,150)));
 		add(NewGame);
 		add(Box.createRigidArea(new Dimension(0,13)));
 		add(Settings);
@@ -58,7 +73,7 @@ public class WindowStartScreen extends JFrame {
 		add(Box.createRigidArea(new Dimension(0,13)));
 		add(Exit);
 		add(Box.createRigidArea(new Dimension(0,13)));
-		
+		setVisible(true);
 		}
 				
 	
@@ -67,6 +82,8 @@ public class WindowStartScreen extends JFrame {
 			@Override
 			public void buttonClicked(String userAnswer) {
 				// TODO Auto-generated method stub
+				
+				
 				
 			}
 			

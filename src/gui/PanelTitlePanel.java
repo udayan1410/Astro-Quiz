@@ -27,6 +27,7 @@ public class PanelTitlePanel extends JPanel {
 
 	public PanelTitlePanel() {	
 	    setBackground(new Color(40,15,122));
+	    setOpaque(false);
 		label = new JLabel(" A S T R O  Q U I Z ", SwingConstants.CENTER);
 		Font font = new Font(Font.MONOSPACED, Font.BOLD, 70);
 		label.setForeground(new Color(255, 218, 54));		
