@@ -25,7 +25,10 @@ public class PanelTimePanel extends JPanel {
 	
 	public PanelTimePanel() {
 		this.context = this;
-		setLayout(new FlowLayout(FlowLayout.TRAILING));
+		
+		
+		//Layout and dimensions
+		setLayout(new FlowLayout(FlowLayout.TRAILING));				
 		Dimension dimension = getPreferredSize();
 		dimension.width = 250;
 		setPreferredSize(dimension);
@@ -78,8 +81,7 @@ public class PanelTimePanel extends JPanel {
 
 		add(curQuestion);
 		add(clockGIF);		
-		add(label);
-				
+		add(label);	
 	}
 
 	

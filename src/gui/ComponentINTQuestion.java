@@ -20,5 +20,6 @@ public class ComponentINTQuestion extends PanelQuestionPanel implements Question
 		this.questions = questions;
 		displayQuestion(questions);
 	
+		add(new PanelInteractivePanel());
 	}
 }

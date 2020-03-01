@@ -80,8 +80,8 @@ public class WindowQuestionScreen extends JFrame {
 
 		@Override
 		public void buttonClicked(String userAnswer) {
-			//System.out.println("user answer = "+userAnswer+" actual = "+questions.getAnswer());
-			score.checkAnswer(questions.getAnswer(),userAnswer);
+			System.out.println("user answer = "+userAnswer+" actual = "+questions.getAnswer());
+			score.checkAnswer(questions.getAnswer(),userAnswer);			
 			callBackScreen();
 		}
 		
