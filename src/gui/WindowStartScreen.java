@@ -33,7 +33,7 @@ public class WindowStartScreen extends JFrame {
 		setVisible(true);
 		
 		
-		setContentPane(new JLabel(new ImageIcon("C:\\Users\\HP\\Desktop\\bg.jpeg")));
+		setContentPane(new JLabel(new ImageIcon(this.getClass().getResource("./assets/bg.jpeg"))));
 		setLayout(new BorderLayout());
 		setVisible(true);
 	

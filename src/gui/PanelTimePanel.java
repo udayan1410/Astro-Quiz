@@ -4,12 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Image;
-import java.util.TimerTask;
-
-import javax.swing.BorderFactory;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -17,7 +13,7 @@ import javax.swing.SwingConstants;
 import interfaces.TimeOut;
 import utilities.Utils;
 
-import java.util.Timer;
+
 
 public class PanelTimePanel extends JPanel {
 
@@ -47,7 +43,7 @@ public class PanelTimePanel extends JPanel {
 		//Clock GIF
 		clockGIF = new JLabel("",SwingConstants.CENTER);
 		clockGIF.setPreferredSize(new Dimension(250,300));
-		ImageIcon icon = new ImageIcon(PanelTimePanel.this.getClass().getResource("./assets/clock.gif"));
+		ImageIcon icon = new ImageIcon(this.getClass().getResource("./assets/sample.gif"));
 		clockGIF.setIcon(icon);		
 		
 		//Time Label
