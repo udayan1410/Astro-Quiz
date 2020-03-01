@@ -20,6 +20,7 @@ public class Score {
 
 	public boolean checkAnswer(String actualAnswer, String userAnswer) {		
 		currentQuestion += 1;		
+		userAnswer = userAnswer.trim();		
 		if (currentQuestion == 11)
 			updateList();
 
