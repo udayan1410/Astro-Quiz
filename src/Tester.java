@@ -16,8 +16,6 @@ public class Tester {
 
 		//new WindowStartScreen();
 		new WindowStartScreen();
-
-		new WindowStartScreen();
 		
 
 	}
