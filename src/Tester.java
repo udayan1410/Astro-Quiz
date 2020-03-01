@@ -13,8 +13,8 @@ public class Tester {
 	
 	
 	public static void main(String args[]){			
-		//new WindowStartScreen();
-		new WindowQuestionScreen();
+		new WindowStartScreen();
+		//new WindowQuestionScreen();
 		/*Score score = new Score();
 		scanner =new Scanner(System.in);
 		
