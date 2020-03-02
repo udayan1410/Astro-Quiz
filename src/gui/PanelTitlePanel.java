@@ -29,10 +29,10 @@ public class PanelTitlePanel extends JPanel {
 	    setBackground(new Color(40,15,122));
 	    setOpaque(false);
 		label = new JLabel(" A S T R O  Q U I Z ", SwingConstants.CENTER);
-		Font font = new Font(Font.MONOSPACED, Font.BOLD, 70);
-		label.setForeground(new Color(255, 218, 54));		
+		Font font = new Font(Font.SERIF,Font.BOLD+ Font.ITALIC ,90);
+		label.setForeground(new Color(245, 245, 245));		
 		label.setFont(font);
-		setMaximumSize(new Dimension(Utils.DIMENSION.width,100));
+		setMaximumSize(new Dimension(Utils.DIMENSION.width,200));
 		add(label);
 	}
 

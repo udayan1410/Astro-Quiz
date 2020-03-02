@@ -28,7 +28,7 @@ public class WindowStartScreen extends JFrame {
 			
 		setTitle("Space Quiz");
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
-		setDefaultLookAndFeelDecorated(true);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setLocationRelativeTo(null);
@@ -36,7 +36,7 @@ public class WindowStartScreen extends JFrame {
 	
 		
 		
-		setContentPane(new JLabel(new ImageIcon(this.getClass().getResource("./assets/bg.jpeg"))));
+		setContentPane(new JLabel(new ImageIcon(this.getClass().getResource("./assets/4.jpg"))));
 		
 		//setLayout(new FlowLayout(FlowLayout.TRAILING));
 		this.setLayout(new BoxLayout(getContentPane(),BoxLayout.Y_AXIS));
@@ -61,7 +61,14 @@ public class WindowStartScreen extends JFrame {
 		HighScore.setButtonCommunicator(new ButtonHandler());
 		
 		Exit = new CustomButton("Exit");
-		Exit.setButtonCommunicator(new ButtonHandler());
+		Exit.setButtonCommunicator(new CustomButtonCommunicator() {
+			
+			@Override
+			public void buttonClicked(String userAnswer) {
+				dispose();
+				
+			}
+		});
 		
 		add(new PanelTitlePanel());
 		add(Box.createRigidArea(new Dimension(0,150)));

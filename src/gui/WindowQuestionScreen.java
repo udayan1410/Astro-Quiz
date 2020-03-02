@@ -28,7 +28,7 @@ public class WindowQuestionScreen extends JFrame {
 		super("ASTRO QUIZ");
 
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
-		setDefaultLookAndFeelDecorated(true);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 		setVisible(true);
