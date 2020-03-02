@@ -4,10 +4,12 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -59,14 +61,14 @@ public class CustomButton extends JLabel {
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
 				setBackground(Utils.DARKBLUE);				
-				customButton.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,14));
+				//customButton.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,14));
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
 				setBackground(Utils.SKYBLUE);
-				customButton.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
+				//customButton.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));				
 				setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
 			}
 			
@@ -74,12 +76,16 @@ public class CustomButton extends JLabel {
 			public void mouseClicked(MouseEvent e) {
 				buttonCommunicator.buttonClicked(customButton.getText());
 			}
-		});
-				
+		});				
 	}
 		
 	public void setButtonCommunicator(CustomButtonCommunicator buttonCommunicator){
 		this.buttonCommunicator = buttonCommunicator;
+	}
+	
+	public void setImage(String imageName){
+		ImageIcon icon = new ImageIcon(new ImageIcon(this.getClass().getResource("./assets/"+imageName)).getImage().getScaledInstance(320,490,Image.SCALE_SMOOTH));
+		setIcon(icon);
 	}
 	
 	
