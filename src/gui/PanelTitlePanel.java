@@ -32,8 +32,9 @@ public class PanelTitlePanel extends JPanel {
 		Font font = new Font(Font.SERIF,Font.BOLD+ Font.ITALIC ,90);
 		label.setForeground(new Color(245, 245, 245));		
 		label.setFont(font);
+		label.setBorder(new EmptyBorder(60,0,0,0));
 		setMaximumSize(new Dimension(Utils.DIMENSION.width,200));
-		add(label);
+		add(label);		
 	}
 
 	/*@Override

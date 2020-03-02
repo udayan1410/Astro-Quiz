@@ -38,7 +38,7 @@ public class CustomButton extends JLabel {
 		setVerticalAlignment(SwingConstants.CENTER);
 		setMinimumSize(new Dimension(460,60));
 		setMaximumSize(new Dimension(460,60));		
-		setOpaque(true);
+		setOpaque(false);
 		setBorder(line);
 		setForeground(Color.white);
 		setBackground(Utils.DARKBLUE);	

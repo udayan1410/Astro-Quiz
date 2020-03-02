@@ -39,9 +39,8 @@ public class WindowStartScreen extends JFrame {
 	
 		
 		
-		setContentPane(new JLabel(new ImageIcon(this.getClass().getResource("./assets/4.jpg"))));
-		
-		//setLayout(new FlowLayout(FlowLayout.TRAILING));
+		setContentPane(new JLabel(new ImageIcon(this.getClass().getResource("./assets/bg.jpeg"))));
+
 		this.setLayout(new BoxLayout(getContentPane(),BoxLayout.Y_AXIS));
 		
 				
@@ -74,7 +73,7 @@ public class WindowStartScreen extends JFrame {
 		});
 		
 		add(new PanelTitlePanel());
-		add(Box.createRigidArea(new Dimension(0,150)));
+		add(Box.createRigidArea(new Dimension(0,120)));
 		add(NewGame);
 		add(Box.createRigidArea(new Dimension(0,13)));
 		add(Settings);
