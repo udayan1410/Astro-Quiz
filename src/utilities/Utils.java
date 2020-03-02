@@ -16,8 +16,8 @@ import model.Questions;
 
 public class Utils {
 
-	public static final Integer COUNTDOWN_INTEGER = 20;
-	public static final Dimension DIMENSION = Toolkit.getDefaultToolkit().getScreenSize();
+	public static final Integer COUNTDOWN_INTEGER = 30;
+	public static Dimension DIMENSION = Toolkit.getDefaultToolkit().getScreenSize();
 	public static final Color SKYBLUE = new Color(12, 99, 199);
 	public static final Color DARKBLUE = new Color(40, 15, 122);
 

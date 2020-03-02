@@ -32,17 +32,17 @@ import utilities.Utils;
 public class PanelQuestionPanel extends JPanel {
 
 	private JTextArea label;
-	
+
 	private PanelTitlePanel titlePanel;
 	private CustomButtonCommunicator buttonCommunicator;
 
-	public PanelQuestionPanel() {	
-				
+	public PanelQuestionPanel() {
+
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		setBackground(Utils.DARKBLUE);
 
-		titlePanel = new PanelTitlePanel();
+		titlePanel = new PanelTitlePanel();		
 		add(new PanelTitlePanel());
 	}
 
@@ -57,14 +57,14 @@ public class PanelQuestionPanel extends JPanel {
 		label.setEditable(false);
 		label.setForeground(new Color(255, 255, 255));
 		label.setMaximumSize(new Dimension(Utils.DIMENSION.width, 180));
-		//label.setBorder(new EmptyBorder(0, 40, 0, 40));
-		 label.setBorder(BorderFactory.createEtchedBorder());
+		label.setBorder(new EmptyBorder(0, 40, 0, 40));
+		//label.setBorder(BorderFactory.createEtchedBorder());
 		label.setFont(font);
 
-		add(Box.createRigidArea(new Dimension(0, 40)));
+		add(Box.createRigidArea(new Dimension(0, 50)));
 		add(label);
 		add(Box.createRigidArea(new Dimension(0, 20)));
-		
+
 	}
 
 	public void RBclicked(String userAnswer) {
@@ -75,6 +75,4 @@ public class PanelQuestionPanel extends JPanel {
 		this.buttonCommunicator = buttonCommunicator;
 	}
 
-	
-	
 }
