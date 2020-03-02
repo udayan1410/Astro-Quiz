@@ -39,7 +39,7 @@ public class WindowStartScreen extends JFrame {
 	
 		
 		
-		setContentPane(new JLabel(new ImageIcon(this.getClass().getResource("./assets/bg.jpeg"))));
+		setContentPane(new JLabel(new ImageIcon(this.getClass().getResource("./assets/backgroundImage1.jpg"))));
 
 		this.setLayout(new BoxLayout(getContentPane(),BoxLayout.Y_AXIS));
 		
