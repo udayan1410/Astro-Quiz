@@ -57,7 +57,16 @@ public class WindowStartScreen extends JFrame {
 		});
 		
 		Settings = new CustomButton("Settings");
-		Settings.setButtonCommunicator(new ButtonHandler());
+		Settings.setButtonCommunicator(new CustomButtonCommunicator() {
+			
+			@Override
+			public void buttonClicked(String userAnswer) {
+				setVisible(false);
+				new WindowSettings();
+				dispose();
+				
+			}
+		});
 		
 		HighScore = new CustomButton("High Score");
 		HighScore.setButtonCommunicator(new ButtonHandler());
