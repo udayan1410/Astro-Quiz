@@ -12,9 +12,8 @@ import model.Score;
 public class Tester {		
 	
 	public static void main(String args[]){			
-
 		new WindowStartScreen();
-		
+
 		
 	}
 }
