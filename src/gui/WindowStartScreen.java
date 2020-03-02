@@ -35,12 +35,11 @@ public class WindowStartScreen extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-	
-		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);		
 		
 		setContentPane(new JLabel(new ImageIcon(this.getClass().getResource("./assets/backgroundImage1.jpg"))));
-
+		
+		
 		this.setLayout(new BoxLayout(getContentPane(),BoxLayout.Y_AXIS));
 					
 		NewGame = new CustomButton("New Game");
