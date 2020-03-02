@@ -22,7 +22,7 @@ public class WindowSettings extends JFrame{
 
 	private static final LayoutManager FlowLayout = null;
 
-	private CustomButton GameSound,gOn,gOff,MusicSound,mon,moff;
+	private CustomSettingsButton GameSound,gOn,gOff,GameMusic,mOn,mOff;
 	
 	
 	public WindowSettings(){
@@ -42,35 +42,45 @@ setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		
 		setLayout(FlowLayout);
 	
-		
-		
-		
 		this.setLayout(new BoxLayout(getContentPane(),BoxLayout.Y_AXIS));
-		JPanel HorizontalPanel = new JPanel();
-	    HorizontalPanel.setLayout(new FlowLayout(1,60,20));
+		JPanel HorizontalPanel1 = new JPanel();
+	    HorizontalPanel1.setLayout(new FlowLayout(1,60,20));
 	    
-	    GameSound = new CustomButton("GameSound");
+	    GameSound = new CustomSettingsButton("Game Sound");
 	    GameSound.setButtonCommunicator(new ButtonHandler());
 	    
-	    gOn = new CustomButton("ON");
+	    gOn = new CustomSettingsButton("ON");
 	    gOn.setButtonCommunicator(new ButtonHandler());
 	    
-	    gOff = new CustomButton("OFF");
+	    gOff = new CustomSettingsButton("OFF");
 	    gOff.setButtonCommunicator(new ButtonHandler());
 	    
 	    
 	    add(new PanelTitlePanel());
+	    add(Box.createRigidArea(new Dimension(0,50)));
+	    HorizontalPanel1.add(GameSound);
+	    HorizontalPanel1.add(Box.createRigidArea(new Dimension(0,13)));
+	    HorizontalPanel1.add(gOn);
+	    HorizontalPanel1.add(Box.createRigidArea(new Dimension(0,13)));
+	    HorizontalPanel1.add(gOff);
+	    HorizontalPanel1.setOpaque(false);
+	    add(HorizontalPanel1);
+	   
 	    
-	    HorizontalPanel.add(GameSound);
-	    HorizontalPanel.add(Box.createRigidArea(new Dimension(13,0)));
-	    HorizontalPanel.add(gOn);
-	    HorizontalPanel.add(Box.createRigidArea(new Dimension(13,0)));
-	    HorizontalPanel.add(gOff);
-	   // HorizontalPanel.add(Box.createRigidArea(new Dimension(0,1)));
-	    HorizontalPanel.setOpaque(false);
-	    //HorizontalPanel.add(Box.createRigidArea(new Dimension(0,13)));
-	    add(HorizontalPanel);
+	    JPanel HorizontalPanel2 = new JPanel();
+	    HorizontalPanel2.setLayout(new FlowLayout(1,60,20));
+	    GameMusic = new CustomSettingsButton("Game Music");
+	    mOn = new CustomSettingsButton("ON");
+	    mOn.setButtonCommunicator(new ButtonHandler());
 	    
+	    mOff = new CustomSettingsButton("OFF");
+	    mOff.setButtonCommunicator(new ButtonHandler());
+	   
+	    HorizontalPanel2.add(GameMusic);
+	    HorizontalPanel2.add(mOn);
+	    HorizontalPanel2.add(mOff);
+	    HorizontalPanel2.setOpaque(false);
+	    add(HorizontalPanel2);
 		
 	
 	    setVisible(true);
