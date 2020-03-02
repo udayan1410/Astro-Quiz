@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -39,8 +40,9 @@ public class PanelQuestionPanel extends JPanel {
 	public PanelQuestionPanel() {
 
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		setBorder(BorderFactory.createLineBorder(Color.black));
+		//setBorder(BorderFactory.createLineBorder(Color.black));
 		setBackground(Utils.DARKBLUE);
+		setOpaque(false);
 
 		titlePanel = new PanelTitlePanel();		
 		add(new PanelTitlePanel());
@@ -60,6 +62,10 @@ public class PanelQuestionPanel extends JPanel {
 		label.setBorder(new EmptyBorder(0, 40, 0, 40));
 		//label.setBorder(BorderFactory.createEtchedBorder());
 		label.setFont(font);
+		label.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		//label.setHorizontalAlignment(SwingConstants.CENTER);
+		//label.setVerticalAlignment(SwingConstants.CENTER);
 
 		add(Box.createRigidArea(new Dimension(0, 50)));
 		add(label);
@@ -75,4 +81,16 @@ public class PanelQuestionPanel extends JPanel {
 		this.buttonCommunicator = buttonCommunicator;
 	}
 
+	@Override
+	protected void paintComponent(Graphics grphcs) {
+		super.paintComponent(grphcs);
+		Graphics2D g2d = (Graphics2D) grphcs;
+		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		GradientPaint gp = new GradientPaint(0, 0, new Color(36, 11, 54), 0, 900, new Color(195, 20, 50));
+	
+		g2d.setPaint(gp);
+		g2d.fillRect(0, 0, getWidth(), getHeight());
+
+	}
+	
 }
