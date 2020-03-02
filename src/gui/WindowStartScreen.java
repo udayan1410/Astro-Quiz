@@ -42,11 +42,9 @@ public class WindowStartScreen extends JFrame {
 		setContentPane(new JLabel(new ImageIcon(this.getClass().getResource("./assets/backgroundImage1.jpg"))));
 
 		this.setLayout(new BoxLayout(getContentPane(),BoxLayout.Y_AXIS));
-		
-				
+					
 		NewGame = new CustomButton("New Game");
-		NewGame.setButtonCommunicator(new CustomButtonCommunicator() {
-			
+		NewGame.setButtonCommunicator(new CustomButtonCommunicator() {			
 			@Override
 			public void buttonClicked(String userAnswer) {
 				setVisible(false);

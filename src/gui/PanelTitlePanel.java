@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import utilities.Utils;
@@ -23,7 +24,7 @@ import java.awt.Toolkit;
 
 public class PanelTitlePanel extends JPanel {
 
-	JLabel label;
+	private JLabel label;
 
 	public PanelTitlePanel() {	
 	    setBackground(new Color(40,15,122));
@@ -32,11 +33,11 @@ public class PanelTitlePanel extends JPanel {
 		Font font = new Font(Font.SERIF,Font.BOLD+ Font.ITALIC ,90);
 		label.setForeground(new Color(245, 245, 245));		
 		label.setFont(font);
-		label.setBorder(new EmptyBorder(60,0,0,0));
-		setMaximumSize(new Dimension(Utils.DIMENSION.width,200));
-		add(label);		
+		label.setBorder(new EmptyBorder(0,0,0,0));
+		setMaximumSize(new Dimension(Utils.DIMENSION.width,130));
+		add(label);				
 	}
-
+	
 	/*@Override
 	protected void paintComponent(Graphics grphcs) {
 		super.paintComponent(grphcs);
