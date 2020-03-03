@@ -73,5 +73,12 @@ public class CustomButton extends JLabel {
 		this.buttonCommunicator = buttonCommunicator;
 	}
 
-
+	public CustomButton getCustomButtom(){
+		return this;
+	}
+	
+	public void setSize(Dimension dimension){
+		setMinimumSize(dimension);
+		setMaximumSize(dimension);
+	}
 }

@@ -11,20 +11,22 @@ public class Score {
 	private int correctAnswers,firstHalfResult;
 	public int currentQuestion;
 	private QuestionListMaker listMaker;
-
+	public AnswerCalculator answerCalculator = new AnswerCalculator();
+	
 	public Score() {
 		correctAnswers = 0;
 		currentQuestion = 1;
 		initializeList();
 	}
 
-	public boolean checkAnswer(String actualAnswer, String userAnswer) {		
+	public boolean checkAnswer(String actualAnswer, String userAnswer, Questions questions) {		
 		currentQuestion += 1;		
 		userAnswer = userAnswer.trim();		
 		if (currentQuestion == 11)
 			updateList();
 
 		if (userAnswer.equalsIgnoreCase(actualAnswer)) {
+			updateAnswerCounter(questions);
 			correctAnswers += 1;
 			return true;
 		}
@@ -52,7 +54,7 @@ public class Score {
 
 	public Questions getNextQuestion() {
 		if (questionsList.isEmpty()) {
-			System.out.println("Done with quiz");
+			//System.out.println("Done with quiz");
 			return null;
 		}
 		return questionsList.remove(0);
@@ -66,12 +68,12 @@ public class Score {
 		int finalScore=0;
 		if(listMaker instanceof CategoryEasy){			
 			finalScore =firstHalfResult+ (int)((correctAnswers - firstHalfResult)*0.70);
-			System.out.println("Second category = Easy");
+			//System.out.println("Second category = Easy");
 		}
 		
 		else if (listMaker instanceof CategoryMedium){			
 			finalScore = correctAnswers;
-			System.out.println("Second category = Medium");
+			//System.out.println("Second category = Medium");
 		}
 	
 		else {					
@@ -79,10 +81,35 @@ public class Score {
 			if(secondHalfResult<=8)
 				secondHalfResult+=2;
 			finalScore = secondHalfResult+firstHalfResult;
-			System.out.println("Second category = Hard");
+			//System.out.println("Second category = Hard");
 		}
 		
 		return finalScore;
 	}
 	
+	public void setFinalScore(int num){
+		this.correctAnswers = num;
+	}
+	
+	public int getFirstHalfResult(){
+		return firstHalfResult;
+	}
+	
+	public void updateAnswerCounter(Questions questions){
+		switch(questions.getQuestionType()){
+		case "RB":
+			answerCalculator.rbQuestion+=1;
+			break;
+		case "TF":
+			answerCalculator.tfQuestion+=1;
+			break;
+		case "FIB":
+			answerCalculator.fibQuestion+=1;
+			break;
+		case "INT":
+			answerCalculator.intQuestion+=1;
+			break;
+			
+		}
+	}
 }

@@ -31,8 +31,7 @@ public class CustomInteractiveButton extends JLabel {
 		setMaximumSize(new Dimension(460, 60));
 		setOpaque(false);
 		setBorder(line);
-		setForeground(Color.white);
-		setBackground(Utils.DARKBLUE);
+		setForeground(Color.white);		
 		setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 68));
 		setAlignmentX(Component.CENTER_ALIGNMENT);
 

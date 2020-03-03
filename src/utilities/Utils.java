@@ -16,7 +16,7 @@ import model.Questions;
 
 public class Utils {
 
-	public static final Integer COUNTDOWN_INTEGER = 30;
+	public static final Integer COUNTDOWN_INTEGER = 5;
 	public static Dimension DIMENSION = Toolkit.getDefaultToolkit().getScreenSize();
 	public static final Color SKYBLUE = new Color(12, 99, 199);
 	public static final Color DARKBLUE = new Color(40, 15, 122);
@@ -26,21 +26,17 @@ public class Utils {
 
 		switch (questions.getQuestionType()) {
 		case "RB":
-			// System.out.println("in case RB");
 			questionPanel = new ComponentRBQuestion(questions);
 			break;
 
 		case "FIB":
-			// System.out.println("in case FIB");
 			questionPanel = new ComponentFIBQuestion(questions);
 			break;
 
 		case "TF":
-			// System.out.println("in case TF");
 			questionPanel = new ComponentTFQuestion(questions);
 			break;
 		case "INT":
-			// System.out.println("in case INT");
 			questionPanel = new ComponentINTQuestion(questions);
 			break;
 		}
