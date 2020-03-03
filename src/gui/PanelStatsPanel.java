@@ -40,9 +40,9 @@ public class PanelStatsPanel extends JPanel {
 		setBackground(Color.black);
 
 		// creating a barchart
-		barChartPanel = createBarChart();		
+		barChartPanel = createBarChart();
 		barChartPanel.setPreferredSize(new Dimension(600, 310));
-		
+
 		// creating PieChart
 		pieChartPanel = createPieChart();
 		pieChartPanel.setPreferredSize(new Dimension(600, 310));
@@ -52,12 +52,11 @@ public class PanelStatsPanel extends JPanel {
 		panel1.setOpaque(false);
 		panel1.setLayout(new FlowLayout(FlowLayout.CENTER));
 		Dimension panelDimension = getToolkit().getScreenSize();
-		panelDimension.height/=2;
+		panelDimension.height /= 2;
 		panel1.setMaximumSize(panelDimension);
 		panel1.setMinimumSize(panelDimension);
 		panel1.setPreferredSize(panelDimension);
-		panel1.add(pieChartPanel);		
-		//panel1.setBackground(Color.yellow);
+		panel1.add(pieChartPanel);
 
 		panel2 = new JPanel();
 		panel2.setOpaque(false);
@@ -65,11 +64,9 @@ public class PanelStatsPanel extends JPanel {
 		panel2.setMinimumSize(panelDimension);
 		panel2.setPreferredSize(panelDimension);
 		panel2.add(barChartPanel);
-		//panel2.setBackground(Color.white);
 
 		add(panel1);
 		add(panel2);
-
 	}
 
 	public ChartPanel createPieChart() {
@@ -86,14 +83,13 @@ public class PanelStatsPanel extends JPanel {
 		plot.setForegroundAlpha(0.5f);
 
 		return new ChartPanel(chart);
-
 	}
 
 	public ChartPanel createBarChart() {
 
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-		dataset.addValue(score.getFirstHalfResult(),"First Section","First Section");
-		dataset.addValue(score.getFinalScore()-score.getFirstHalfResult(),"Second Section","Second Section");
+		dataset.addValue(score.getFirstHalfResult(), "First Section", "First Section");
+		dataset.addValue(score.getFinalScore() - score.getFirstHalfResult(), "Second Section", "Second Section");
 
 		JFreeChart barChart = ChartFactory.createBarChart("Performance In Sections", "Sections", "Score", dataset,
 				PlotOrientation.VERTICAL, true, true, false);
@@ -107,11 +103,8 @@ public class PanelStatsPanel extends JPanel {
 		Graphics2D g2d = (Graphics2D) grphcs;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		GradientPaint gp = new GradientPaint(0, 0, new Color(36, 11, 54), 0, 900, new Color(195, 20, 50));
-	
 		g2d.setPaint(gp);
 		g2d.fillRect(0, 0, getWidth(), getHeight());
 
 	}
-	
-	
 }

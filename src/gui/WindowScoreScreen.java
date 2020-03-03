@@ -49,9 +49,7 @@ public class WindowScoreScreen extends JFrame {
 			case "TRY AGAIN":			
 				new WindowStartScreen();				
 				break;				
-			}
-
-	
+			}	
 			dispose();
 		}
 	}
