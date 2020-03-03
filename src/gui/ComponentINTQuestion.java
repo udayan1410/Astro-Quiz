@@ -63,11 +63,12 @@ public class ComponentINTQuestion extends PanelQuestionPanel implements Question
 		// Add horizontal Panel
 		horizontalPanel = new JPanel();
 		horizontalPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 10));
+		horizontalPanel.setOpaque(false);
 		for (int i = 0; i < customButtons.length; i++) {
 			horizontalPanel.add(customButtons[i]);
 			customButtons[i].setButtonCommunicator(new ButtomCommunicator());
 		}
-		horizontalPanel.setBorder(BorderFactory.createEtchedBorder());
+		//horizontalPanel.setBorder(BorderFactory.createEtchedBorder());
 		horizontalPanel.setMinimumSize(new Dimension(1200, 120));
 		horizontalPanel.setMaximumSize(new Dimension(1200, 120));
 		horizontalPanel.setBackground(Utils.DARKBLUE);
