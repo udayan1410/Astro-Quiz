@@ -24,14 +24,15 @@ public class WindowQuestionScreen extends JFrame {
 	private TimeOut timeOut;
 	private PanelTimePanel timePanel;
 	public Questions questions;
+	private boolean flag = false;
 
 	public WindowQuestionScreen() {
 		super("ASTRO QUIZ");
 
-		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);		
+		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
-		setBackground(new Color(0,0,0));
+		setBackground(new Color(0, 0, 0));
 		setVisible(true);
 
 		updatePanel();
@@ -40,13 +41,13 @@ public class WindowQuestionScreen extends JFrame {
 	public void updatePanel() {
 		if (score.hasNext()) {
 
-			//Adding time panel
+			// Adding time panel
 			timePanel = new PanelTimePanel();
 			setTimeOut();
 			timePanel.setCurrentQuestion(score.currentQuestion);
 			add(timePanel, BorderLayout.WEST);
 
-			//Adding questions
+			// Adding questions
 			questions = score.getNextQuestion();
 			questionPanel = Utils.getQuestionPanel(questions);
 			questionPanel.setButtonCommunicator(new RBButtonCommunicator());
@@ -55,11 +56,12 @@ public class WindowQuestionScreen extends JFrame {
 			validate();
 			repaint();
 
-		} else{
+		} else if (!flag) {
 			setVisible(false);
+			flag = true;
 			new WindowScoreScreen(score);
-			dispose();			
-			System.out.println(score.getFinalScore());
+			dispose();
+			// System.out.println(score.getFinalScore());
 		}
 	}
 
@@ -74,7 +76,7 @@ public class WindowQuestionScreen extends JFrame {
 			@Override
 			public void timeOver(PanelTimePanel context) {
 				if (timePanel == context) {
-					score.checkAnswer(questions.getAnswer(), "");
+					score.checkAnswer(questions.getAnswer(), "", questions);
 					callBackScreen();
 				}
 			}
@@ -85,12 +87,9 @@ public class WindowQuestionScreen extends JFrame {
 
 		@Override
 		public void buttonClicked(String userAnswer) {
-			System.out.println("user answer = " + userAnswer + " actual = " + questions.getAnswer());
-			score.checkAnswer(questions.getAnswer(), userAnswer);
+			score.checkAnswer(questions.getAnswer(), userAnswer, questions);
 			callBackScreen();
 		}
 	}
-	
-	
 
 }
