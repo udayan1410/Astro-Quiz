@@ -85,4 +85,7 @@ public class Score {
 		return finalScore;
 	}
 	
+	public void setFinalScore(int num){
+		this.correctAnswers = num;
+	}
 }

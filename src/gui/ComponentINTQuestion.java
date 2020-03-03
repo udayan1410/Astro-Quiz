@@ -67,10 +67,9 @@ public class ComponentINTQuestion extends PanelQuestionPanel implements Question
 			horizontalPanel.add(customButtons[i]);
 			customButtons[i].setButtonCommunicator(new ButtomCommunicator());
 		}
-		horizontalPanel.setBorder(BorderFactory.createEtchedBorder());
 		horizontalPanel.setMinimumSize(new Dimension(1200, 120));
 		horizontalPanel.setMaximumSize(new Dimension(1200, 120));
-		horizontalPanel.setBackground(Utils.DARKBLUE);
+		horizontalPanel.setOpaque(false);
 
 		// Clear Button
 		clearButton = new CustomButton("CLEAR");

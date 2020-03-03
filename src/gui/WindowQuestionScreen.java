@@ -28,8 +28,7 @@ public class WindowQuestionScreen extends JFrame {
 	public WindowQuestionScreen() {
 		super("ASTRO QUIZ");
 
-		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
-		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
+		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 		setBackground(new Color(0,0,0));
@@ -56,9 +55,12 @@ public class WindowQuestionScreen extends JFrame {
 			validate();
 			repaint();
 
-		} else
+		} else{
+			setVisible(false);
+			new WindowScoreScreen(score);
+			dispose();			
 			System.out.println(score.getFinalScore());
-
+		}
 	}
 
 	public void callBackScreen() {
