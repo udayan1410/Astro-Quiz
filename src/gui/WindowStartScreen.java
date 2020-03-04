@@ -18,9 +18,6 @@ import interfaces.CustomButtonCommunicator;
 
 
 public class WindowStartScreen extends JFrame {
-
-	JButton b1;
-	JLabel l1;
 	private CustomButton NewGame,Settings,HighScore,Exit;
 	
 		public WindowStartScreen()

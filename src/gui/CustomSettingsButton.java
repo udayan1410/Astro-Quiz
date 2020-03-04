@@ -27,25 +27,25 @@ public class CustomSettingsButton extends JLabel {
 		setText(title);
 		setHorizontalAlignment(SwingConstants.CENTER);
 		setVerticalAlignment(SwingConstants.CENTER);
-		setMinimumSize(new Dimension(460, 60));
-		setMaximumSize(new Dimension(460, 60));
+		setMinimumSize(new Dimension(760, 60));
+		setMaximumSize(new Dimension(760, 80));
 		setOpaque(false);
 		setBorder(line);
 		setForeground(Color.white);
 		setBackground(Utils.DARKBLUE);
-		setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 28));
+		setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 24));
 		setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		addMouseListener(new MouseAdapter() {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				customInteractiveButton.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 28));
+				customInteractiveButton.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 24));
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				customInteractiveButton.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 40));
+				customInteractiveButton.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
 				setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
 			}
 			
