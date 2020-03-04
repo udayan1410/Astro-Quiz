@@ -56,52 +56,56 @@ public class CustomButton extends JLabel {
 		setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		addMouseListener(new MouseAdapter() {
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// setBackground(Utils.DARKBLUE);
 				customButton.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 18));
-				
+
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// setBackground(Utils.SKYBLUE);
 				playSound();
 				customButton.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 25));
 				setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
-			}			
+			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				buttonCommunicator.buttonClicked(customButton.getText());
 			}
 		});
-	
+
 	}
 
 	public void setButtonCommunicator(CustomButtonCommunicator buttonCommunicator) {
 		this.buttonCommunicator = buttonCommunicator;
 	}
 
-	public CustomButton getCustomButtom(){
+	public CustomButton getCustomButtom() {
 		return this;
 	}
-	
-	public void setSize(Dimension dimension){
+
+	public void setSize(Dimension dimension) {
 		setMinimumSize(dimension);
 		setMaximumSize(dimension);
 	}
-	
-	public void playSound(){
-		try{
-		InputStream in = new FileInputStream("./Sounds/pop.wav");
-		InputStream bufferedIn = new BufferedInputStream(in);
-		AudioInputStream as = AudioSystem.getAudioInputStream(bufferedIn);
-		Clip clip = AudioSystem.getClip();
-		clip.open(as);			
-		clip.start();
+
+	public void playSound() {
+		try {
+			if (Utils.gameSound) {
+				InputStream in = new FileInputStream("./Sounds/pop.wav");
+				InputStream bufferedIn = new BufferedInputStream(in);
+				AudioInputStream as = AudioSystem.getAudioInputStream(bufferedIn);
+				Clip clip = AudioSystem.getClip();
+				clip.open(as);
+				clip.start();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		catch(Exception e){e.printStackTrace();}
 	}
-	
-	
+
 }

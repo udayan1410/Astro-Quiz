@@ -6,7 +6,13 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
@@ -45,6 +51,7 @@ public class CustomSettingsButton extends JLabel {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				playSound();
 				customInteractiveButton.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
 				setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
 			}
@@ -60,6 +67,21 @@ public class CustomSettingsButton extends JLabel {
 
 	public void setButtonCommunicator(CustomButtonCommunicator buttonCommunicator){
 		this.buttonCommunicator = buttonCommunicator;
+	}
+	
+	public void playSound() {
+		try {
+			if (Utils.gameSound) {
+				InputStream in = new FileInputStream("./Sounds/pop.wav");
+				InputStream bufferedIn = new BufferedInputStream(in);
+				AudioInputStream as = AudioSystem.getAudioInputStream(bufferedIn);
+				Clip clip = AudioSystem.getClip();
+				clip.open(as);
+				clip.start();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
 
