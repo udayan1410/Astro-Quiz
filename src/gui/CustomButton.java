@@ -8,7 +8,13 @@ import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,6 +25,7 @@ import javax.swing.TransferHandler;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import org.ietf.jgss.Oid;
 import org.omg.CORBA.PUBLIC_MEMBER;
 
 import com.sun.glass.ui.Cursor;
@@ -54,10 +61,12 @@ public class CustomButton extends JLabel {
 			public void mouseExited(MouseEvent e) {
 				// setBackground(Utils.DARKBLUE);
 				customButton.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 18));
+				
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// setBackground(Utils.SKYBLUE);
+				playSound();
 				customButton.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 25));
 				setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
 			}			
@@ -81,4 +90,18 @@ public class CustomButton extends JLabel {
 		setMinimumSize(dimension);
 		setMaximumSize(dimension);
 	}
+	
+	public void playSound(){
+		try{
+		InputStream in = new FileInputStream("./Sounds/pop.wav");
+		InputStream bufferedIn = new BufferedInputStream(in);
+		AudioInputStream as = AudioSystem.getAudioInputStream(bufferedIn);
+		Clip clip = AudioSystem.getClip();
+		clip.open(as);			
+		clip.start();
+		}
+		catch(Exception e){e.printStackTrace();}
+	}
+	
+	
 }

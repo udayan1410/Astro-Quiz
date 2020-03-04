@@ -1,7 +1,13 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -26,6 +32,8 @@ public class WindowScoreScreen extends JFrame {
 
 	public WindowScoreScreen(Score score) {
 		this.score = score;
+		
+		playGameOverSound();
 		
 		//High Score Panel		
 		highScorePanel = new PanelHighScorePanel(this.score, new ButtonCommunicator());
@@ -54,6 +62,17 @@ public class WindowScoreScreen extends JFrame {
 		}
 	}
 	
+	public void playGameOverSound(){
+		try{
+			InputStream in = new FileInputStream("./Sounds/gameover.wav");
+			InputStream bufferedIn = new BufferedInputStream(in);
+			AudioInputStream as = AudioSystem.getAudioInputStream(bufferedIn);
+			Clip clip = AudioSystem.getClip();
+			clip.open(as);			
+			clip.start();
+			}
+			catch(Exception e){e.printStackTrace();}
+	}
 	
 	
 }
