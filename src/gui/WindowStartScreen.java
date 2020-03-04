@@ -34,6 +34,13 @@ public class WindowStartScreen extends JFrame {
 
 	public WindowStartScreen() {
 
+
+	private CustomButton NewGame,Settings,HighScore,Exit;
+	
+		public WindowStartScreen()
+		{
+			
+
 		setTitle("Space Quiz");
 
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
