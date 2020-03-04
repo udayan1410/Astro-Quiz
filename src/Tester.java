@@ -15,9 +15,6 @@ public class Tester {
 		new WindowStartScreen();
 		//new WindowQuestionScreen();
 		//new WindowScoreScreen(new Score());
-		
-
-		//new WindowScoreScreen(new Score());
 
 
 	}

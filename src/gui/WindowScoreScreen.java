@@ -33,7 +33,6 @@ public class WindowScoreScreen extends JFrame {
 	public WindowScoreScreen(Score score) {
 		this.score = score;
 		
-		playGameOverSound();
 		
 		//High Score Panel		
 		highScorePanel = new PanelHighScorePanel(this.score, new ButtonCommunicator());
@@ -42,10 +41,12 @@ public class WindowScoreScreen extends JFrame {
 		// Creating window
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
+		
 		setLayout(new BorderLayout());
 		add(highScorePanel,BorderLayout.WEST);
 		add(statsPanel,BorderLayout.CENTER);
+		setVisible(true);
+		playGameOverSound();		
 	}
 	
 	

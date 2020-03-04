@@ -29,11 +29,12 @@ public class WindowQuestionScreen extends JFrame {
 	public WindowQuestionScreen() {
 		super("ASTRO QUIZ");
 
+		setVisible(true);
+
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 		setBackground(new Color(0, 0, 0));
-		setVisible(true);
 
 		updatePanel();
 	}
