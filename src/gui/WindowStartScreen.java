@@ -34,13 +34,6 @@ public class WindowStartScreen extends JFrame {
 
 	public WindowStartScreen() {
 
-
-	private CustomButton NewGame,Settings,HighScore,Exit;
-	
-		public WindowStartScreen()
-		{
-			
-
 		setTitle("Space Quiz");
 
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
@@ -121,8 +114,7 @@ public class WindowStartScreen extends JFrame {
 			Clip clip = AudioSystem.getClip();
 			clip.open(as);
 			clip.loop(Clip.LOOP_CONTINUOUSLY);
-			
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
