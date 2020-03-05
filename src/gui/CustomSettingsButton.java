@@ -38,7 +38,7 @@ public class CustomSettingsButton extends JLabel {
 		setOpaque(false);
 		setBorder(line);
 		setForeground(Color.white);
-		setBackground(Utils.DARKBLUE);
+
 		setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 24));
 		setAlignmentX(Component.CENTER_ALIGNMENT);
 

@@ -55,9 +55,9 @@ public class PanelHighScorePanel extends JPanel {
 
 		// Score Text and Image
 		// score.setFinalScore(18);
-		highScore = new JLabel("Score : " + score.getFinalScore() + "/20");
-		int finalScore = score.getFinalScore();
-		setImageBasedOnScore(score.getFinalScore());
+		highScore = new JLabel("Score : " + score.getFinalScoreValue() + "/20");
+		int finalScore = score.getFinalScoreValue();
+		setImageBasedOnScore(score.getFinalScoreValue());
 		highScore.setFont(new Font(Font.MONOSPACED, Font.BOLD, 45));
 		highScore.setAlignmentX(Component.CENTER_ALIGNMENT);
 

@@ -40,8 +40,8 @@ public class PanelQuestionPanel extends JPanel {
 	public PanelQuestionPanel() {
 
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		//setBorder(BorderFactory.createLineBorder(Color.black));
-		setBackground(Utils.DARKBLUE);
+	
+
 		setOpaque(false);
 
 		titlePanel = new PanelTitlePanel();		
