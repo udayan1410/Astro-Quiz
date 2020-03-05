@@ -116,7 +116,7 @@ public class WindowStartScreen extends JFrame {
 			}
 		});
 
-		HighScore = new CustomButton("High Score");
+		HighScore = new CustomButton("High Scores");
 		HighScore.setButtonCommunicator(new CustomButtonCommunicator() {
 			
 			@Override
