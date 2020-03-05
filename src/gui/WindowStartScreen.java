@@ -33,7 +33,7 @@ public class WindowStartScreen extends JFrame {
 
 	private JButton b1;
 	private JLabel l1;
-	private CustomButton NewGame, Settings, HighScore, Exit;
+	private CustomButton NewGame,AdminLogin,Settings, HighScore, Exit;
 	private SoundCommunicator soundCommunicator;
 	private Clip clip = null;
 
@@ -60,6 +60,18 @@ public class WindowStartScreen extends JFrame {
 
 			}
 		});
+		
+		AdminLogin = new CustomButton("Admin Login");
+		AdminLogin.setButtonCommunicator(new CustomButtonCommunicator() {
+			
+			@Override
+			public void buttonClicked(String userAnswer) {
+				setVisible(false);
+				new WindowAdminLogin();
+				
+			}
+		});
+		
 
 		Settings = new CustomButton("Settings");
 		Settings.setButtonCommunicator(new CustomButtonCommunicator() {
@@ -89,6 +101,8 @@ public class WindowStartScreen extends JFrame {
 		add(new PanelTitlePanel());
 		add(Box.createRigidArea(new Dimension(0, 120)));
 		add(NewGame);
+		add(Box.createRigidArea(new Dimension(0, 13)));
+		add(AdminLogin);
 		add(Box.createRigidArea(new Dimension(0, 13)));
 		add(Settings);
 		add(Box.createRigidArea(new Dimension(0, 13)));
