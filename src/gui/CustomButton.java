@@ -51,7 +51,7 @@ public class CustomButton extends JLabel {
 		setOpaque(false);
 		setBorder(line);
 		setForeground(Color.white);
-		setBackground(Utils.DARKBLUE);
+		
 		setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 18));
 		setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -91,6 +91,7 @@ public class CustomButton extends JLabel {
 	public void setSize(Dimension dimension) {
 		setMinimumSize(dimension);
 		setMaximumSize(dimension);
+		setPreferredSize(dimension);
 	}
 
 	public void playSound() {
@@ -107,5 +108,7 @@ public class CustomButton extends JLabel {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 }

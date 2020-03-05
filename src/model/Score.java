@@ -4,19 +4,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.omg.CORBA.PRIVATE_MEMBER;
+
 import interfaces.QuestionListMaker;
 
 public class Score {
 	private List<Questions> questionsList = new ArrayList();
-	private int correctAnswers,firstHalfResult;
+	private int correctAnswers,firstHalfResult,finalScoreValue;
 	public int currentQuestion;
 	private QuestionListMaker listMaker;
+	private boolean insertData=true;
 	public AnswerCalculator answerCalculator = new AnswerCalculator();
 	
 	public Score() {
 		correctAnswers = 0;
-		currentQuestion = 1;
-		initializeList();
+		currentQuestion = 1;		
 	}
 
 	public boolean checkAnswer(String actualAnswer, String userAnswer, Questions questions) {		
@@ -49,18 +52,19 @@ public class Score {
 
 	private void initializeList() {
 		listMaker = new CategoryFirstHalf();
+		questionsList.clear();
 		questionsList = listMaker.getQuestionsList();
 	}
 
 	public Questions getNextQuestion() {
-		if (questionsList.isEmpty()) {
-			//System.out.println("Done with quiz");
+		if (questionsList.isEmpty()) {		
 			return null;
 		}
 		return questionsList.remove(0);
 	}
 	
 	public boolean hasNext(){
+		
 		return questionsList.size()>0?true:false;
 	}
 
@@ -83,13 +87,11 @@ public class Score {
 			finalScore = secondHalfResult+firstHalfResult;
 			//System.out.println("Second category = Hard");
 		}
+		finalScoreValue = finalScore;
 		
 		return finalScore;
 	}
 	
-	public void setFinalScore(int num){
-		this.correctAnswers = num;
-	}
 	
 	public int getFirstHalfResult(){
 		return firstHalfResult;
@@ -111,5 +113,41 @@ public class Score {
 			break;
 			
 		}
+	}
+	
+	public void initialize(){
+		initializeList();
+	}
+	
+	public QuestionListMaker getQuestionListMaker(){
+		return this.listMaker;
+	}
+	
+	public int getCorrectAnswers(){
+		return this.correctAnswers;
+	}
+	
+	public int getFinalScoreValue(){
+		return this.finalScoreValue;
+	}
+	
+	public void setFirstHalfResult(int num){
+		this.firstHalfResult=num;
+	}
+	
+	public void setCorrectAnswers(int correctAnswers){
+		this.correctAnswers=correctAnswers;
+	}
+	
+	public void setFinalScoreValue(int finalScoreValue){
+		this.finalScoreValue=finalScoreValue;
+	}
+	
+	public void setChangeFlag(){
+		insertData=false;
+	}
+	
+	public boolean getFlag(){
+		return this.insertData;
 	}
 }

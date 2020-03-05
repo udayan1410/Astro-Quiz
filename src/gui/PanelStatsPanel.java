@@ -31,8 +31,11 @@ public class PanelStatsPanel extends JPanel {
 
 	public PanelStatsPanel(Score score) {
 		this.score = score;
+		
+		
 		Dimension dimension = getToolkit().getScreenSize();
-
+		
+		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setPreferredSize(dimension);
 		setMinimumSize(dimension);
@@ -68,7 +71,7 @@ public class PanelStatsPanel extends JPanel {
 		add(panel1);
 		add(panel2);
 	}
-
+	
 	public ChartPanel createPieChart() {
 		DefaultPieDataset dataset = new DefaultPieDataset();
 		dataset.setValue("RB", score.answerCalculator.rbQuestion);
@@ -89,7 +92,8 @@ public class PanelStatsPanel extends JPanel {
 
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		dataset.addValue(score.getFirstHalfResult(), "First Section", "First Section");
-		dataset.addValue(score.getFinalScore() - score.getFirstHalfResult(), "Second Section", "Second Section");
+		//System.out.println("Value 2 = "+(score.getFinalScoreValue()));
+		dataset.addValue(score.getFinalScoreValue() - score.getFirstHalfResult(), "Second Section", "Second Section");
 
 		JFreeChart barChart = ChartFactory.createBarChart("Performance In Sections", "Sections", "Score", dataset,
 				PlotOrientation.VERTICAL, true, true, false);

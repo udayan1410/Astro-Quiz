@@ -17,8 +17,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.sun.deploy.uitoolkit.impl.fx.Utils;
-
-import gui.WindowStartScreen.ButtonHandler;
 import interfaces.CustomButtonCommunicator;
 import interfaces.SoundCommunicator;
 

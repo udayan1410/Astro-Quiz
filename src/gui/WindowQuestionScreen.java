@@ -30,7 +30,7 @@ public class WindowQuestionScreen extends JFrame {
 		super("ASTRO QUIZ");
 
 		setVisible(true);
-
+		score.initialize();
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
@@ -58,6 +58,7 @@ public class WindowQuestionScreen extends JFrame {
 			repaint();
 
 		} else if (!flag) {
+			score.getFinalScore();
 			setVisible(false);
 			flag = true;
 			new WindowScoreScreen(score);
