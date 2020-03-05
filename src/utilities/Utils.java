@@ -16,7 +16,7 @@ import model.Questions;
 
 public class Utils {
 
-	public static final Integer COUNTDOWN_INTEGER = 1;
+	public static final Integer COUNTDOWN_INTEGER = 40;
 	public static Dimension DIMENSION = Toolkit.getDefaultToolkit().getScreenSize();
 	public static boolean gameMusic=true;
 	public static boolean gameSound=true;

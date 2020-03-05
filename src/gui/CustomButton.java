@@ -91,6 +91,7 @@ public class CustomButton extends JLabel {
 	public void setSize(Dimension dimension) {
 		setMinimumSize(dimension);
 		setMaximumSize(dimension);
+		setPreferredSize(dimension);
 	}
 
 	public void playSound() {

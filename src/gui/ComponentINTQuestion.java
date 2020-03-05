@@ -6,10 +6,13 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -112,6 +115,7 @@ public class ComponentINTQuestion extends PanelQuestionPanel implements Question
 
 	public String shuffledString(String answerString) {
 		List<String> letters = Arrays.asList(answerString.split(""));
+			
 		Collections.shuffle(letters);
 		String shuffledString = "";
 		for (String letter : letters) 

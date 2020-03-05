@@ -122,6 +122,7 @@ public class WindowStartScreen extends JFrame {
 			@Override
 			public void buttonClicked(String userAnswer) {
 				setVisible(false);
+			
 				new WindowHighScore();
 				dispose();
 			}
