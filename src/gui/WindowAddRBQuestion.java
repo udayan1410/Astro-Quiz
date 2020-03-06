@@ -5,7 +5,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.sql.SQLException;
-
+import java.lang.String;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -20,13 +20,16 @@ import javax.swing.SwingConstants;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
+import database.DBhelper;
 import interfaces.CustomButtonCommunicator;
+import model.Questions;
+import model.RadioButtonQuestions;
 
 public class WindowAddRBQuestion extends JFrame{
 
 	private JLabel Options,ans,typeDiff;
 	private JTextArea enterQuestion;
-	private JTextField op1,op2,op3,op4,answer,type;
+	private JTextField op1,op2,op3,op4,answer,difficulty;
 	private CustomButton submit,back;
 	public WindowAddRBQuestion() {
 	   
@@ -49,10 +52,10 @@ public class WindowAddRBQuestion extends JFrame{
 		typeDiff.setVerticalAlignment(SwingConstants.CENTER);
 		typeDiff.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
-		type = new JTextField();
-		type.setMinimumSize(new Dimension(260, 40));
-		type.setMaximumSize(new Dimension(260, 40));
-		type.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,20));
+		difficulty = new JTextField();
+		difficulty.setMinimumSize(new Dimension(260, 40));
+		difficulty.setMaximumSize(new Dimension(260, 40));
+		difficulty.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,20));
 		
 		
 		enterQuestion = new JTextArea(1,20);
@@ -105,14 +108,25 @@ public class WindowAddRBQuestion extends JFrame{
 		submit.setButtonCommunicator(new CustomButtonCommunicator() {
 
 			@Override
-			public void buttonClicked(String userAnswer) {
+			public void buttonClicked(String userAnswer) {	
+				Questions questions = new RadioButtonQuestions();
+				questions.setQuestion(enterQuestion.getText());
+				questions.setQuestionDifficulty(difficulty.getText());
+				questions.setQuestionType("Radio Button");				
 				
+				String[] optionsArray = new String[4];
+				optionsArray[0]=(op1.getText().equalsIgnoreCase(answer.getText())?answer.getText().toUpperCase():op1.getText())+"/";
+				optionsArray[1]=(op2.getText().equalsIgnoreCase(answer.getText())?answer.getText().toUpperCase():op2.getText())+"/";
+				optionsArray[2]=(op3.getText().equalsIgnoreCase(answer.getText())?answer.getText().toUpperCase():op3.getText())+"/";
+				optionsArray[3]=(op4.getText().equalsIgnoreCase(answer.getText())?answer.getText().toUpperCase():op4.getText());
+				((RadioButtonQuestions)questions).setOptionsArray(optionsArray);
 				
-				
+				DBhelper.getReference().addQuestion(questions);
 				setVisible(false);
 				new WindowAddQuestions();
 				dispose();
 			}
+			
 		});
 		
 		back = new CustomButton("Back");
@@ -120,7 +134,7 @@ public class WindowAddRBQuestion extends JFrame{
 
 			@Override
 			public void buttonClicked(String userAnswer) {
-				// TODO Auto-generated method stub
+
 				setVisible(false);
 				new WindowAddQuestions();
 				dispose();
@@ -132,7 +146,7 @@ public class WindowAddRBQuestion extends JFrame{
 		add(enterQuestion);
 		add(typeDiff);
 		add(Box.createRigidArea(new Dimension(0, 13)));
-		add(type);
+		add(difficulty);
 		add(Box.createRigidArea(new Dimension(0, 13)));
 		add(Options);
 		add(Box.createRigidArea(new Dimension(0, 13)));

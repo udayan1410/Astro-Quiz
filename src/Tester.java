@@ -14,13 +14,10 @@ public class Tester {
 
 	public static void main(String args[]) {
 		new WindowStartScreen();
-		//new WindowQuestionScreen();
-		//new WindowScoreScreen(new Score());
+		// new WindowQuestionScreen();
+		// new WindowScoreScreen(new Score());
 
-		
-		//new WindowAddRBQuestion();
-
-
+		// new WindowAddRBQuestion();
 
 	}
 }

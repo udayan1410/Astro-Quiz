@@ -22,109 +22,88 @@ import com.sun.javafx.binding.StringFormatter;
 
 import interfaces.CustomButtonCommunicator;
 
-public class WindowAddQuestions extends JFrame{
+public class WindowAddQuestions extends JFrame {
 	private static final LayoutManager FlowLayout = null;
-	
-	private JLabel question,qType;
+
+	private JLabel question, qType;
 	private JComboBox qTypeSelector;
 	private CustomSettingsButton Submit;
-	
+
 	public WindowAddQuestions() {
-		
-		String s1[] = {"Radio Button","True or False","Interactive","Fill in the Blanks"};
-		
+
+		String s1[] = { "Radio Button", "True or False", "Interactive", "Fill in the Blanks" };
+
 		setTitle("New Questions");
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-	
+
 		setContentPane(new JLabel(new ImageIcon(this.getClass().getResource("./assets/backgroundImage1.jpg"))));
 
 		JPanel HorizontalPanel1 = new JPanel();
 		setLayout(FlowLayout);
 		this.setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 		add(new PanelTitlePanel());
-		HorizontalPanel1.setBorder(new EmptyBorder(-100,0,0,0));
-		
-		HorizontalPanel1.setLayout(new FlowLayout(1,40,10));
+		HorizontalPanel1.setBorder(new EmptyBorder(-100, 0, 0, 0));
+
+		HorizontalPanel1.setLayout(new FlowLayout(1, 40, 10));
 		HorizontalPanel1.setBackground(Color.white);
-		HorizontalPanel1.setPreferredSize(new Dimension(5,5));
-		
+		HorizontalPanel1.setPreferredSize(new Dimension(5, 5));
+
 		question = new JLabel("Question:");
 		question.setForeground(new Color(255, 255, 255));
 		question.setBackground(new Color(0, 0, 0));
 		question.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 30));
-		
+
 		HorizontalPanel1.add(question);
 		HorizontalPanel1.setOpaque(false);
 		add(HorizontalPanel1);
-		
+
 		JPanel HorizontalPanel2 = new JPanel();
-		HorizontalPanel2.setLayout(new FlowLayout(1,40,10));
-		
+		HorizontalPanel2.setLayout(new FlowLayout(1, 40, 10));
+
 		qType = new JLabel("Question Type:");
 		qType.setForeground(new Color(255, 255, 255));
 		qType.setBackground(new Color(0, 0, 0));
 		qType.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 30));
-		
+
 		qTypeSelector = new JComboBox(s1);
 		qTypeSelector.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 20));
-		
+
 		HorizontalPanel2.add(qType);
 		HorizontalPanel2.add(qTypeSelector);
 		HorizontalPanel2.setOpaque(false);
 		add(HorizontalPanel2);
-		
-		
-		
+
 		JPanel HorizontalPanel3 = new JPanel();
-		HorizontalPanel3.setLayout(new FlowLayout(1,10,10));
-		
+		HorizontalPanel3.setLayout(new FlowLayout(1, 10, 10));
+
 		Submit = new CustomSettingsButton("   Submit   ");
 		HorizontalPanel3.add(Submit);
 		HorizontalPanel3.setOpaque(false);
 		add(HorizontalPanel3);
 		Submit.setButtonCommunicator(new CustomButtonCommunicator() {
-        
+
 			@Override
 			public void buttonClicked(String userAnswer) {
 				// TODO Auto-generated method stub
 				String selected = (String) qTypeSelector.getSelectedItem();
-				
-				switch(selected){
-				
-				  case "Radio Button":
-					  setVisible(false);
-						new WindowAddRBQuestion();
-						dispose();
-						break;
-						
-				
-				  case "True or False":
-					  setVisible(false);
-					  new WindowAddTFQuestions();
-					  dispose();
-					  break;
-					  
-				  case "Interactive":
-					  setVisible(false);
-					  new WindowAddTFQuestions();
-					  dispose();
-					  
-				  case "Fill in the Blanks":
-					  setVisible(false);
-					  new WindowAddTFQuestions();
-					  dispose();
+
+				if (selected.equalsIgnoreCase("Radio Button")) {
+					setVisible(false);
+					new WindowAddRBQuestion();
+					dispose();
+				} else {
+					setVisible(false);
+					new WindowAddTFQuestions(selected);
+					dispose();
 				}
-				
 			}
 		});
-		
-	    
+
 		setVisible(true);
-		
-		
+
 	}
 }
