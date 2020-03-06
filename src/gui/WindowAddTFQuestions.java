@@ -108,12 +108,15 @@ public class WindowAddTFQuestions extends JFrame{
 	add(Box.createRigidArea(new Dimension(0, 70)));
 	add(enterQuestion);
 	add(question);
+	add(Box.createRigidArea(new Dimension(0, 13)));
 	add(enterDifficulty);
 	add(difficulty);
+	add(Box.createRigidArea(new Dimension(0, 13)));
 	add(enterAnswer);
 	add(answer);
-	add(Box.createRigidArea(new Dimension(0, 70)));
+	add(Box.createRigidArea(new Dimension(0, 50)));
 	add(submit);
+	add(Box.createRigidArea(new Dimension(0, 13)));
 	add(back);
 	
 	setVisible(true);
