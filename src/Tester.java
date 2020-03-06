@@ -13,12 +13,12 @@ import model.Score;
 public class Tester {
 
 	public static void main(String args[]) {
-		//new WindowStartScreen();
+		new WindowStartScreen();
 		//new WindowQuestionScreen();
 		//new WindowScoreScreen(new Score());
 
 		
-		new WindowAddRBQuestion();
+		//new WindowAddRBQuestion();
 
 
 

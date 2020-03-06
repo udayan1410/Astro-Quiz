@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.sql.SQLException;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -15,6 +16,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
 
 import interfaces.CustomButtonCommunicator;
 
@@ -102,10 +106,6 @@ public class WindowAddRBQuestion extends JFrame{
 
 			@Override
 			public void buttonClicked(String userAnswer) {
-				// TODO Auto-generated method stub
-				
-				
-				
 				
 				
 				
