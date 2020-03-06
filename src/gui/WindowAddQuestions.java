@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.LayoutManager;
+import java.awt.Window;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -76,7 +77,7 @@ public class WindowAddQuestions extends JFrame{
 		HorizontalPanel2.setOpaque(false);
 		add(HorizontalPanel2);
 		
-		String selected = (String) qTypeSelector.getSelectedItem();
+		
 		
 		JPanel HorizontalPanel3 = new JPanel();
 		HorizontalPanel3.setLayout(new FlowLayout(1,10,10));
@@ -90,6 +91,7 @@ public class WindowAddQuestions extends JFrame{
 			@Override
 			public void buttonClicked(String userAnswer) {
 				// TODO Auto-generated method stub
+				String selected = (String) qTypeSelector.getSelectedItem();
 				
 				switch(selected){
 				
@@ -97,6 +99,24 @@ public class WindowAddQuestions extends JFrame{
 					  setVisible(false);
 						new WindowAddRBQuestion();
 						dispose();
+						break;
+						
+				
+				  case "True or False":
+					  setVisible(false);
+					  new WindowAddTFQuestions();
+					  dispose();
+					  break;
+					  
+				  case "Interactive":
+					  setVisible(false);
+					  new WindowAddTFQuestions();
+					  dispose();
+					  
+				  case "Fill in the Blanks":
+					  setVisible(false);
+					  new WindowAddTFQuestions();
+					  dispose();
 				}
 				
 			}
