@@ -31,7 +31,7 @@ public class ComponentRBQuestion extends PanelQuestionPanel implements QuestionT
 		this.questions = questions;		
 		displayQuestion(questions);
 		
-		String optionsArray[] = ((RadioButtonQuestions)questions).getOptionsArray();
+		String optionsArray[] = ((RadioButtonQuestions)questions).getOptionsArray(4);
 		btnArray = new CustomButton[optionsArray.length];
 		
 		for(int i=0;i<optionsArray.length;i++){

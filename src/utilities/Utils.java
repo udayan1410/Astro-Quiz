@@ -18,9 +18,9 @@ public class Utils {
 
 	public static final Integer COUNTDOWN_INTEGER = 40;
 	public static Dimension DIMENSION = Toolkit.getDefaultToolkit().getScreenSize();
-	public static boolean gameMusic=true;
-	public static boolean gameSound=true;
-	
+	public static boolean gameMusic = true;
+	public static boolean gameSound = true;
+
 	public static PanelQuestionPanel getQuestionPanel(Questions questions) {
 		PanelQuestionPanel questionPanel = null;
 
@@ -54,6 +54,34 @@ public class Utils {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public static String getQType(Questions questions) {
+		String type = "";
+
+		switch (questions.getQuestionType()) {
+		case "Radio Button":			
+			type="RB";
+			break;
+
+		case "True or False":			
+			type="TF";
+			break;
+
+		case "Interactive":			
+			type="INT";
+			break;
+
+		case "Fill in the Blanks":
+			type="FIB";	
+			break;
+
+		default:
+			break;
+		}
+
+		return type;
+
 	}
 
 }

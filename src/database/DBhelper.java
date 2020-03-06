@@ -77,22 +77,25 @@ public class DBhelper {
 
 	public void insertHighScore(PlayerInfo info) {
 		try {
-			String sqlString = "replace into highscore values('"+info.getPlayerName()+"',"+info.getRbQuestion()+","+info.getFibQuestion()+","+info.getTfQuestion()+","+info.getIntQuestion()+","+info.getCorrectAnswers()+","+info.getFirstHalfResults()+","+info.getFinalScoreValue()+");";
-			
+			String sqlString = "replace into highscore values('" + info.getPlayerName() + "'," + info.getRbQuestion()
+					+ "," + info.getFibQuestion() + "," + info.getTfQuestion() + "," + info.getIntQuestion() + ","
+					+ info.getCorrectAnswers() + "," + info.getFirstHalfResults() + "," + info.getFinalScoreValue()
+					+ ");";
+
 			statement.executeUpdate(sqlString);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
-	public List<PlayerInfo> getScoreData(){
-		
-		List<PlayerInfo> playerInfos = new ArrayList();		
-		try{
-			ResultSet rSet = statement.executeQuery("SELECT * FROM highscore"); 
+
+	public List<PlayerInfo> getScoreData() {
+
+		List<PlayerInfo> playerInfos = new ArrayList();
+		try {
+			ResultSet rSet = statement.executeQuery("SELECT * FROM highscore");
 			while (rSet.next()) {
-				PlayerInfo info= new PlayerInfo();
+				PlayerInfo info = new PlayerInfo();
 				info.setPlayerName(rSet.getString(1));
 				info.setRbQuestion(Integer.parseInt(rSet.getString(2)));
 				info.setFibQuestion(Integer.parseInt(rSet.getString(3)));
@@ -101,12 +104,37 @@ public class DBhelper {
 				info.setCorrectAnswers(Integer.parseInt(rSet.getString(6)));
 				info.setFirstHalfResults(Integer.parseInt(rSet.getString(7)));
 				info.setFinalScoreValue(Integer.parseInt(rSet.getString(8)));
-			    playerInfos.add(info);
+				playerInfos.add(info);
 			}
+		} catch (Exception e) {
 		}
-		catch(Exception e){}
-				
+
 		return playerInfos;
+	}
+
+	public void addQuestion(Questions questions) {
+
+		String qTypeString = Utils.getQType(questions);
+		List<Questions> qList = populateList();
+		int currentID = qList.get(qList.size() - 1).getId() + 1;
+		questions.setId(currentID);
+
+		String insertIntoQnaPool = "";
+		if (qTypeString.equalsIgnoreCase("RB")) {			
+			insertIntoQnaPool = "Insert into qnapool values('" + questions.getId() + "','" + questions.getQuestion()
+					+ "','" + ((RadioButtonQuestions) questions).getOptionsArray() + "');";
+		} else {
+			insertIntoQnaPool = "Insert into qnapool values('" + questions.getId() + "','" + questions.getQuestion()
+					+ "','" + questions.getAnswer() + "');";
+		}
+		String insertIntoQinfo = "Insert into qinfo values('" + questions.getId() + "','" + qTypeString + "','"
+				+ questions.getQuestionDifficulty() + "');";
+		try {
+			statement.executeUpdate(insertIntoQnaPool);
+			statement.executeUpdate(insertIntoQinfo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
