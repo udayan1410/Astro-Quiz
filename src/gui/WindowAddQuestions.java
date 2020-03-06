@@ -29,6 +29,9 @@ public class WindowAddQuestions extends JFrame {
 	private JComboBox qTypeSelector;
 	private CustomSettingsButton Submit;
 
+
+	private CustomSettingsButton Submit,back;
+	
 	public WindowAddQuestions() {
 
 		String s1[] = { "Radio Button", "True or False", "Interactive", "Fill in the Blanks" };
@@ -78,12 +81,34 @@ public class WindowAddQuestions extends JFrame {
 		add(HorizontalPanel2);
 
 		JPanel HorizontalPanel3 = new JPanel();
+
 		HorizontalPanel3.setLayout(new FlowLayout(1, 10, 10));
 
+		HorizontalPanel3.setLayout(new FlowLayout(1, 10, 10));
+
+
+		HorizontalPanel3.setLayout(new FlowLayout(1,10,10));
+	
+		back = new CustomSettingsButton("   Back   ");
+		HorizontalPanel3.setOpaque(false);
+		add(HorizontalPanel3);
+		back.setButtonCommunicator(new CustomButtonCommunicator() {
+			@Override
+			public void buttonClicked(String userAnswer) {
+				setVisible(false);
+				new WindowStartScreen();
+				dispose();
+			}
+		});
+
+		
 		Submit = new CustomSettingsButton("   Submit   ");
 		HorizontalPanel3.add(Submit);
 		HorizontalPanel3.setOpaque(false);
 		add(HorizontalPanel3);
+		HorizontalPanel3.add(back);
+		
+		
 		Submit.setButtonCommunicator(new CustomButtonCommunicator() {
 
 			@Override
