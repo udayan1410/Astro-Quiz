@@ -65,6 +65,7 @@ public class WindowScoreScreen extends JFrame {
 			setVisible(false);
 			switch (userAnswer) {
 			case "TRY AGAIN":
+				DBhelper.getReference().clearFullList();
 				new WindowStartScreen();
 				break;
 			}

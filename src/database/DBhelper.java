@@ -10,6 +10,8 @@ import utilities.Utils;
 
 import java.util.*;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 public class DBhelper {
 	private static DBhelper dbhelper;
 	private Connection connection;
@@ -34,6 +36,7 @@ public class DBhelper {
 	}
 
 	public List<Questions> populateList() {
+		
 		List<Questions> qList = new ArrayList();
 		try {
 			ResultSet rs = statement.executeQuery("SELECT * FROM qnapool natural Join qinfo;");
@@ -64,15 +67,24 @@ public class DBhelper {
 	}
 
 	public Questions getByTypeAndDifficulty(QuestionCategory category) {
-
+		List<Questions> tempList = new ArrayList();
+		
 		for (int i = 0; i < fullList.size(); i++) {
 			Questions listQuestions = fullList.get(i);
 			if (listQuestions.getQuestionType().equalsIgnoreCase(category.getqType())
 					&& listQuestions.getQuestionDifficulty().equalsIgnoreCase(category.getqDifficulty())) {
-				return fullList.remove(i);
+				tempList.add(fullList.get(i));
+				//return fullList.remove(i);
 			}
 		}
-		return null;
+		
+		int min=0;
+		int max= tempList.size()-1;
+		int range = max-min+1;
+		
+		int number = (int)(Math.random()*range)+min;			
+		fullList.remove(tempList.get(number));								
+		return tempList.get(number);
 	}
 
 	public void insertHighScore(PlayerInfo info) {
@@ -135,6 +147,11 @@ public class DBhelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void clearFullList(){
+		fullList.clear();
+		fullList=populateList();
 	}
 
 }
