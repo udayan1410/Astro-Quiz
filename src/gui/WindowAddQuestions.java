@@ -27,7 +27,7 @@ public class WindowAddQuestions extends JFrame {
 
 	private JLabel question, qType;
 	private JComboBox qTypeSelector;
-	private CustomSettingsButton Submit;
+	private CustomSettingsButton Submit,back;
 
 	public WindowAddQuestions() {
 
@@ -80,8 +80,22 @@ public class WindowAddQuestions extends JFrame {
 		JPanel HorizontalPanel3 = new JPanel();
 		HorizontalPanel3.setLayout(new FlowLayout(1, 10, 10));
 
+		back = new CustomSettingsButton("   Back   ");
+		back.setButtonCommunicator(new CustomButtonCommunicator() {
+
+			@Override
+			public void buttonClicked(String userAnswer) {
+				// TODO Auto-generated method stub
+				setVisible(false);
+				new WindowStartScreen();
+				dispose();
+			}
+		});
+
+		
 		Submit = new CustomSettingsButton("   Submit   ");
 		HorizontalPanel3.add(Submit);
+		HorizontalPanel3.add(back);
 		HorizontalPanel3.setOpaque(false);
 		add(HorizontalPanel3);
 		Submit.setButtonCommunicator(new CustomButtonCommunicator() {
@@ -102,7 +116,8 @@ public class WindowAddQuestions extends JFrame {
 				}
 			}
 		});
-
+		
+		
 		setVisible(true);
 
 	}
