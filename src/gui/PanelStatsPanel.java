@@ -74,10 +74,10 @@ public class PanelStatsPanel extends JPanel {
 	
 	public ChartPanel createPieChart() {
 		DefaultPieDataset dataset = new DefaultPieDataset();
-		dataset.setValue("RB", score.answerCalculator.rbQuestion);
-		dataset.setValue("FIB", score.answerCalculator.fibQuestion);
-		dataset.setValue("TF", score.answerCalculator.tfQuestion);
-		dataset.setValue("INT", score.answerCalculator.intQuestion);
+		dataset.setValue("Radio Buttons Qns", score.answerCalculator.rbQuestion);
+		dataset.setValue("Fill In the Blank Qns", score.answerCalculator.fibQuestion);
+		dataset.setValue("True/False Qns", score.answerCalculator.tfQuestion);
+		dataset.setValue("Interactive Qns", score.answerCalculator.intQuestion);
 
 		JFreeChart chart = ChartFactory.createPieChart3D("Question Category", dataset, true, true, false);
 		PiePlot3D plot = (PiePlot3D) chart.getPlot();

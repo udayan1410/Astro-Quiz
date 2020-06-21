@@ -21,7 +21,7 @@ public class DBhelper {
 	private DBhelper() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/space_quiz", "root", "edengarden");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/space_quiz", "root", "");
 			statement = connection.createStatement();
 			fullList = populateList();
 		} catch (Exception e) {
